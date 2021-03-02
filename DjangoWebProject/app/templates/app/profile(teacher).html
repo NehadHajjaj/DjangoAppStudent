@@ -1,0 +1,141 @@
+﻿
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta charset="utf-8">
+    <meta name="author" content="Hadeer Magdy">
+    <meta name="description" content="NumScroller - jQuery plugin for number increment rolling animation when it becomes visibile while scrolling">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Name</title>
+
+
+    <link href="../../static/app/content/style.css" rel="stylesheet" type="text/css" />
+    <!--    <link href="css/style-en.css" rel="stylesheet" type="text/css" />-->
+</head>
+
+<body>
+<div class="main-content">
+    <!-- Top navbar -->
+    <nav class="navbar  navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+        <div class="container-fluid">
+            <!-- Brand -->
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#" target="_blank">User profile</a>
+            <!-- Form -->
+            {#<form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+                <div class="form-group mb-0">
+                    <div class="input-group input-group-alternative">
+
+                    </div>
+                </div>
+            </form>#}
+            <!-- User -->
+
+
+        </div>
+    </nav>
+    <!-- Header -->
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 300px; background-size: cover; background-position: center top;">
+        <!-- Mask -->
+        <span class="mask bg-gradient-default opacity-8"></span>
+        <!-- Header container -->
+        <div class="container-fluid d-flex align-items-center">
+            <div class="row">
+                <div class="col-lg-7 col-md-10">
+                    <h1 class="display-2 text-white">Hello Amal</h1>
+                    <p class="text-white mt-0 mb-5">This is your profile page. People who visit your profile will see this, so show them your style</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--7 ">
+        <div class="row">
+            <div class="col-xl-4 center order-xl-2 mb-5 mb-xl-0">
+                <div class="card card-profile shadow">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 order-lg-2">
+                            <div class="card-profile-image">
+                                <a >
+                                   <img src="../../static/app/img/kku.png" class="rounded-circle">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+                        <div class="d-flex justify-content-between">
+                        </div>
+                    </div>
+                    <div class="card-body pt-0 pt-md-4">
+	                    <div class="row">
+		                    <div class="col">
+			                    <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+			                    </div>
+		                    </div>
+	                    </div>
+	                    {% block content %}
+	                    <h2>{{ title }}.</h2> 
+	                    <h3>{{ message }}</h3> 
+
+	                    {% if contact_list %}
+	                    {% for contact in contact_list %}
+                    <div>
+                        <form method="POST" action="{% url 'editTeacher' id=contact.teach_id %}">
+                            {% csrf_token %}
+                            <h3>
+                                <span>Name :</span><input type="text" id="teach_name" name="teach_name" value=" {{ contact.teach_name }}" />
+                            </h3>
+                            <div class="h5 font-weight-300">
+                                <h3>
+                                    <span>Address : </span><input type="text" class=" mr-2" id="college" name="college" value="{{contact.college}}"></input>
+                                </h3>
+                            </div>
+                            <div class="h5 ">
+                                <h3>
+                                    <span>Phone : </span> <input type="tel" id="phone" name="phone" class="ni business_briefcase-24 mr-2" value="{{contact.phone}}"></input>
+                                </h3>
+                            </div>
+                            <div class="h5 ">
+                                <h3>
+                                    <span>E-Mail : </span> <input type="email" class="ni business_briefcase-24 mr-2" id="email" name="email" value="{{contact.email}}"> </input>
+                                </h3>
+                            </div>
+                            <hr class="my-4">
+                            <h3> About : </h3>
+                            <p>Graduate from {{contact.department}}</p>
+                            <div>
+                                {#<a href="#" class="btn btn-sm btn-info  ">update profile</a>#}
+                                <input type="submit" class="btn btn-sm btn-info"  value="update profile">
+                                <a href="{% url 'recommendation' %}" class="btn btn-sm btn-primary ">recommend</a>
+                            </div>
+                        </form>
+                    </div>
+	                    {% endfor %}
+	                    {% else %}
+	                    <p>No student are available.</p> 
+	                    {% endif %}
+	                    {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="row align-items-center justify-content-xl-between">
+        <div class="col-xl-6 m-auto text-center">
+            <div class="copyright">
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+</body>
+
+</html>
+
+	               
